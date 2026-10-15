@@ -652,7 +652,7 @@ const $ = s => document.querySelector(s);
 
 $("#dow").innerHTML = DOW.map(d => `<div class="cal__dow lbl">${d}</div>`).join("");
 
-let rows = "", i = 0;
+let rows = "";
 const total = FIRST + DAYS, cellsN = Math.ceil(total / 7) * 7;
 let buf = "";
 for(let c = 0; c < cellsN; c++){
@@ -673,7 +673,7 @@ let picked = null;
 $("#grid").addEventListener("click", e => {
   const b = e.target.closest("button.cell");
   if(!b) return;
-  cells.forEach(c => c.setAttribute && c.setAttribute("aria-pressed","false"));
+  document.querySelectorAll("button.cell").forEach(c => c.setAttribute("aria-pressed","false"));
   b.setAttribute("aria-pressed","true");
   picked = +b.dataset.d;
   $("#pick").innerHTML = `<div class="mono">ДЕКАБРЬ 2026</div>
